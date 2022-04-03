@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <h1 class="text-center">Resorts We Recommend</h1>
+    {% if not resorts %}
+        <h2>There are no resorts at the moment</h2>
+        <div class="right">
+        <a class="button details" href="{% url 'add resort' %}">Add Resort</a>
+        </div>
+    {% else %}
+        {% for resort in resorts %}
+            <div class="note-container">
+                <h2>{{ resort.name }} <img src="{{ resort.image }}"/></h2>
+                <div>
+                    <p>Description: {{ resort.description|truncatechars:50 }}</p>
+                    <p>Price per Night: {{ resort.price|floatformat:2 }} Euro</p>
+                </div>
+                <div class="right">
+                    <a class="button details" href="{% url 'view resort' resort.pk %}">Details</a>
+                    <a class="button edit" href="{% url 'edit resort' resort.pk %}">Edit</a>
+                    <a class="button delete" href="{% url 'remove resort' resort.pk %}">Delete</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

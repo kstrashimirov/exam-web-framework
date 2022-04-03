@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <h1>Resort Details</h1>
+    <!--headings-->
+
+    <!--details note box-->
+    <div class="note-details-container">
+        <h2>{{ resort.name }}</h2>
+        <img class="detail-img" src="{{ resort.image }}" alt="note-image"/>
+        <div>
+            <p>Description</p>
+        </div>
+        <p>
+            {{ resort.description }}
+        </p>
+        <div>
+            <h3>Type: {{ resort.type }}</h3>
+            <h3>Country: {{ resort.country }}</h3>
+            <h3>Reviews: {{ reviews_count }}</h3>
+            <h2>Average Score: {{ score }}</h2>
+            <h2>Price: {{ resort.price|floatformat:2 }} Euro</h2>
+        </div>
+        <div class="right">
+            <a class="button edit" href="{% url 'reviews' resort.pk %}">Reviews</a>
+            {% if is_owner %}
+                <a class="button edit" href="{% url 'edit resort' resort.pk %}">Edit</a>
+                <a class="button delete" href="{% url 'remove resort' resort.pk %}">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

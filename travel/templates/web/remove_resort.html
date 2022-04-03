@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div class = "container">
+<h1 class="text-center">Remove Resort</h1>
+    <div class="form">
+            <form method="POST" action="{% url 'remove resort' resort.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Remove"/>
+            </form>
+        </div>
+</div>
+
+{% endblock %}

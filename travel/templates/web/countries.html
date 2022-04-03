@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <h1 class="text-center">Countries We Provide Vacations</h1>
+    {% if not countries %}
+        <h2>There are no destinations at the moment</h2>
+    {% else %}
+        {% for country in countries %}
+            <div class="note-container">
+                <h2>{{ country.name }} <img src="{{ country.banner }}"/></h2>
+                 <div>
+                    <p>All Resorts: </p>
+                </div>
+
+                <div class="right">
+                    {% if request.user.is_superuser %}
+                    <a class="button delete" href="{% url 'remove country' country.pk %}">Delete</a>
+                    {% endif %}
+                    <a class="button details" href="{% url 'resorts' %}">Resorts</a>
+                    <a class="button details" href="{% url 'view country' country.pk %}">Info</a>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

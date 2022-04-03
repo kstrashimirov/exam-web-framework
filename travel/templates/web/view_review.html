@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <h1>Review Details</h1>
+
+    <div class="note-details-container">
+        <h2> {{ review.name }} </h2>
+
+        <div>
+            <p>Description</p>
+        </div>
+        <p>
+{{ review.description }}
+        </p>
+        <div>
+            <h3>Grade: {{ review.grade }}</h3>
+            <h2>Resort: {{ resort.name }}</h2>
+
+        <div class="right">
+            <a class="button edit" href="{% url 'reviews' resort.pk %}">To All Reviews</a>
+            {% if user.is_superuser or user.is_staff %}
+            <a class="button delete" href="{% url 'remove review' review.pk %}">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <h1>Country Details</h1>
+    <!--headings-->
+
+    <!--details note box-->
+    <div class="note-details-container">
+        <h2>{{ country.name }}</h2>
+        <img class="detail-img" src="{{ country.banner }}" alt="country-image"/>
+        <div>
+
+
+            <h2>Resorts: {{ resorts_count }}</h2>
+        </div>
+        <div class="right">
+            <a class="button edit" href="">Edit</a>
+            <a class="button delete" href="">Delete</a>
+        </div>
+    </div>
+
+{% endblock %}

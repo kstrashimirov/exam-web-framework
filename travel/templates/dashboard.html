@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div class="right">
+        <a class="button edit" href="{% url 'add country' %}">Add Country</a>
+        <a class="button edit" href="{% url 'add resort' %}">Add Resort</a>
+        <a class="button edit" href="{% url 'add review' %}">Add Review</a>
+    </div>
+
+    <h1>Exam Holidays</h1>
+
+    {% if not reviews %}
+        <h2>There are no reviews yet.</h2>
+    {% else %}
+<div class="container">
+        <img style="width: 35%" src="https://act-on.com/wp-content/uploads/2015/12/shutterstock_425996818.jpg"
+             alt="">
+        <div class="absolute">
+                <h2> - We Have for you: {{ reviews }} Reviews for {{ resorts }} Resorts in {{ country }} Countries - </h2>
+        </div>
+    </div>
+     {% endif %}
+      <div class="right">
+        <a class="button edit" href="{% url 'countries' %}">View Countries</a>
+        <a class="button edit" href="{% url 'resorts' %}">View Resorts</a>
+    </div>
+
+{% endblock %}
