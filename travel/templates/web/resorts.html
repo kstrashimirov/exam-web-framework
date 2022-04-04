@@ -4,7 +4,7 @@
     {% if not resorts %}
         <h2>There are no resorts at the moment</h2>
         <div class="right">
-        <a class="button details" href="{% url 'add resort' %}">Add Resort</a>
+            <a class="button details" href="{% url 'add resort' %}">Add Resort</a>
         </div>
     {% else %}
         {% for resort in resorts %}
@@ -23,5 +23,42 @@
 
         {% endfor %}
     {% endif %}
+    <style>
+        .pagination {
+            clear: both;
+            position: relative;
+            text-align: center;
+        }
 
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination a.active {
+            background-color: #556B2F;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ffcb63;
+        }
+    </style>
+{% if resorts %}
+    <div class="pagination">
+        {% if resorts.has_previous %}
+            <a class="page-link" href="?page=1">&laquo</a>
+            <a class="page-link" href="?page={{ resorts.previous_page_number }}">Previous</a>
+        {% endif %}
+        <a class="page-link" href="">Page {{ resorts.number }} of {{ resorts.paginator.num_pages }}</a>
+        {% if resorts.has_next %}
+            <a class="page-link" href="?page={{ resorts.next_page_number }}">Next</a>
+            <a class="page-link" href="?page={{ resorts.paginator.num_pages }}">&raquo</a>
+        {% endif %}
+    </div>
+    {% endif %}
 {% endblock %}

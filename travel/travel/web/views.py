@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.views import generic as views
 from django.shortcuts import render, redirect
 
@@ -71,7 +72,9 @@ def remove_country(request, pk):
 
 
 def view_countries(request):
-    countries = Country.objects.all()
+    p = Paginator(Country.objects.all(), 2)
+    page = request.GET.get('page')
+    countries = p.get_page(page)
 
     context = {
         'countries': countries,
@@ -110,13 +113,18 @@ def add_resort(request):
 
 def view_all_resorts(request):
     countries = Country.objects.all()
-    resorts = Resort.objects.all()
+    # resorts = Resort.objects.all()
+
+    p = Paginator(Resort.objects.all(), 1)
+    page = request.GET.get('page')
+    resorts = p.get_page(page)
 
     context = {
         'countries': countries,
         'resorts': resorts,
     }
     return render(request, 'web/resorts.html', context)
+
 
 
 def view_resort(request, pk):
