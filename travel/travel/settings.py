@@ -73,10 +73,10 @@ WSGI_APPLICATION = 'travel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'travel_db',
-        'USER': 'postgres',
-        'PASSWORD': '1123QwER',
-        'HOST': '127.0.0.1',
+        'NAME': 'd2p6volm9r5q5n',
+        'USER': 'nlpvbkankwoxep',
+        'PASSWORD': 'be400fddfc9468c13cb1b1b772a09b75497a8e8b7ab444bf716018d9dd44ab33',
+        'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
