@@ -15,8 +15,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'krasi-exam-dwf.herokuapp.com'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
