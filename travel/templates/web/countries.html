@@ -7,13 +7,13 @@
         {% for country in countries %}
             <div class="note-container">
                 <h2>{{ country.name }} <img src="{{ country.banner }}"/></h2>
-                 <div>
+                <div>
                     <p>All Resorts: </p>
                 </div>
 
                 <div class="right">
                     {% if request.user.is_superuser %}
-                    <a class="button delete" href="{% url 'remove country' country.pk %}">Delete</a>
+                        <a class="button delete" href="{% url 'remove country' country.pk %}">Delete</a>
                     {% endif %}
                     <a class="button details" href="{% url 'resorts' %}">Resorts</a>
                     <a class="button details" href="{% url 'view country' country.pk %}">Info</a>
@@ -22,19 +22,20 @@
             </div>
 
         {% endfor %}
-
-{% if countries %}
-    <div class="pagination">
-        {% if countries.has_previous %}
-            <a class="page-link" href="?page=1">&laquo</a>
-            <a class="page-link" href="?page={{ countries.previous_page_number }}" >Previous</a>
-        {% endif %}
-            <a class="page-link" href="">Page {{ countries.number }} of {{ countries.paginator.num_pages }}</a>
-    {% if countries.has_next %}
-        <a class="page-link" href="?page={{ countries.next_page_number }}">Next</a>
-        <a class="page-link" href="?page={{ countries.paginator.num_pages }}">&raquo</a>
     {% endif %}
-    </div>
+
+    {% if countries %}
+        <div class="pagination">
+            {% if countries.has_previous %}
+                <a class="page-link" href="?page=1">&laquo</a>
+                <a class="page-link" href="?page={{ countries.previous_page_number }}">Previous</a>
+            {% endif %}
+            <a class="page-link" href="">Page {{ countries.number }} of {{ countries.paginator.num_pages }}</a>
+            {% if countries.has_next %}
+                <a class="page-link" href="?page={{ countries.next_page_number }}">Next</a>
+                <a class="page-link" href="?page={{ countries.paginator.num_pages }}">&raquo</a>
+            {% endif %}
+        </div>
     {% endif %}
 
 {% endblock %}
