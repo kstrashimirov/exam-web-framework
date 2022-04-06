@@ -9,16 +9,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0(ar&jl7103gc0$0k9q%5c+lfc#dh3lkyd-v5gc!g0ialia^36'
+# 'django-insecure-0(ar&jl7103gc0$0k9q%5c+lfc#dh3lkyd-v5gc!g0ialia^36'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'krasi-exam-dwf.herokuapp.com'
-]
+SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(' ')
 
 
 # Application definition
@@ -70,18 +70,18 @@ WSGI_APPLICATION = 'travel.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2p6volm9r5q5n',
-        'USER': 'nlpvbkankwoxep',
-        'PASSWORD': 'be400fddfc9468c13cb1b1b772a09b75497a8e8b7ab444bf716018d9dd44ab33',
-        'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
+DEFAULT_DATABASE_CONFIG = {
+    'ENGINE': 'django.db.backends.postgresql',
+    'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+    'PORT': os.getenv('DB_PORT', '5432'),  # if no env variable DB_PORT, return '5432'
+    'NAME': os.getenv('DB_NAME', 'travel_db'),
+    'USER': os.getenv('DB_USER', 'postgres'),
+    'PASSWORD': os.getenv('DB_PASSWORD', '1123QwER'),
 }
 
+DATABASES = {
+    'default': DEFAULT_DATABASE_CONFIG,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
