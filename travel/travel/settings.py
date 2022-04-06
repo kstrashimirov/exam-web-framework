@@ -4,7 +4,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -12,14 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # 'django-insecure-0(ar&jl7103gc0$0k9q%5c+lfc#dh3lkyd-v5gc!g0ialia^36'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
-
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(' ')
-
 
 # Application definition
 
@@ -67,7 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'travel.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DEFAULT_DATABASE_CONFIG = {
@@ -100,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
