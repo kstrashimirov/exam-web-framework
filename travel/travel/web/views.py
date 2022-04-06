@@ -19,6 +19,7 @@ class HomeView(RedirectToDashboard, views.TemplateView):
         context['hide_additional_nav_items'] = True
         return context
 
+
 #
 # class DashboardView(views.TemplateView):
 #     reviews = Reviews.objects.all()
@@ -124,7 +125,6 @@ def view_all_resorts(request):
         'resorts': resorts,
     }
     return render(request, 'web/resorts.html', context)
-
 
 
 def view_resort(request, pk):

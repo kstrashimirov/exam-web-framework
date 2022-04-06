@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def allowed_groups(allowed_roles=[]):
@@ -10,6 +11,6 @@ def allowed_groups(allowed_roles=[]):
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:
-                return HttpResponse('You are not allowed to edit this article')
+                return render(request, 'errors/wrong_group.html')
         return wrapper
     return decorator

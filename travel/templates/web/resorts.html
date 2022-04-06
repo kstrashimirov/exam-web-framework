@@ -23,31 +23,7 @@
 
         {% endfor %}
     {% endif %}
-    <style>
-        .pagination {
-            clear: both;
-            position: relative;
-            text-align: center;
-        }
 
-        .pagination a {
-            color: black;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
-            border: 1px solid #ddd;
-        }
-
-        .pagination a.active {
-            background-color: #556B2F;
-            color: white;
-            border: 1px solid #4CAF50;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ffcb63;
-        }
-    </style>
 {% if resorts %}
     <div class="pagination">
         {% if resorts.has_previous %}
