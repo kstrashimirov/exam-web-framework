@@ -11,6 +11,6 @@ def allowed_groups(allowed_roles=[]):
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:
-                return render(request, 'errors/wrong_group.html')
+                return render(request, 'errors/group.html')
         return wrapper
     return decorator

@@ -1,8 +1,12 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-
+    <h1 style="font-size:11vw; color:#556B2F" class="text-center">ERROR</h1>
     <h1 class="text-center">You Do Not Have Sufficient Permissions</h1>
 
     <h2 class="text-center">Please check your group membership</h2>
+    <br>
+    <div class="right">
+        <a class="button edit" href="{% url 'index' %}">Home Page</a>
+    </div>
 
 {% endblock %}

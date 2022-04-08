@@ -245,3 +245,14 @@ def remove_review(request, pk):
         'review': review,
     }
     return render(request, 'web/remove_review.html', context)
+
+
+class InternalErrorView(views.View):
+    def get(self, request):
+        return render(request, 'errors/general-error.html')
+
+
+class Internal404ErrorView(views.View):
+    def get(self, request):
+        return render(request, 'errors/404.html')
+
