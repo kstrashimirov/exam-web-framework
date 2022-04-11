@@ -19,7 +19,9 @@
                 </div>
                 <div class="right">
                     <a class="button details" href="{% url 'view review' review.pk %}">Details</a>
+                     {% if user.is_superuser or user.is_staff %}
                     <a class="button delete" href="{% url 'remove review' review.pk %}">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
