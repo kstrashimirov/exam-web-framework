@@ -32,7 +32,7 @@
             <a class="page-link" href="?page={{ reviews.previous_page_number }}">Previous</a>
         {% endif %}
         <a class="page-link" href="">Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}</a>
-        {% if resorts.has_next %}
+        {% if reviews.has_next %}
             <a class="page-link" href="?page={{ reviews.next_page_number }}">Next</a>
             <a class="page-link" href="?page={{ reviews.paginator.num_pages }}">&raquo</a>
         {% endif %}
