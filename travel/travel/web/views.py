@@ -222,7 +222,7 @@ def view_all_reviews(request, pk):
 def view_reviews(request, pk):
     review = Review.objects.get(pk=pk)
     resort = Resort.objects.get(id=review.resort_id)
-    is_owner = request.user.id == resort.user_id
+    is_owner = request.user.id == review.user_id
 
     context = {
         'review': review,
