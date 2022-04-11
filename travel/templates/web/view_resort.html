@@ -17,7 +17,7 @@
             <h3>Type: {{ resort.type }}</h3>
             <h3>Country: {{ resort.country }}</h3>
             <h3>Reviews: {{ reviews_count }}</h3>
-            <h2>Average Score: {{ score }}</h2>
+            <h2>Average Score: {{ score|floatformat:2 }}</h2>
             <h2>Price: {{ resort.price|floatformat:2 }} Euro</h2>
         </div>
         <div class="right">
