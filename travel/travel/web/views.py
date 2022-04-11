@@ -144,13 +144,10 @@ def view_resort(request, pk):
     reviews_count = len(reviews) if reviews else 0
     score = total / reviews_count if reviews else "-No Reviews Yet-"
 
-    is_owner = request.user.id == resort.user_id
-
     context = {
         'resort': resort,
         'reviews_count': reviews_count,
         'score': score,
-        'is_owner': is_owner,
     }
     return render(request, 'web/view_resort.html', context)
 
@@ -225,10 +222,12 @@ def view_all_reviews(request, pk):
 def view_reviews(request, pk):
     review = Review.objects.get(pk=pk)
     resort = Resort.objects.get(id=review.resort_id)
+    is_owner = request.user.id == resort.user_id
 
     context = {
         'review': review,
         'resort': resort,
+        'is_owner': is_owner,
     }
     return render(request, 'web/view_review.html', context)
 

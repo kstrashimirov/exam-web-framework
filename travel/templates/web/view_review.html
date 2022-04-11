@@ -17,7 +17,7 @@
 
         <div class="right">
             <a class="button edit" href="{% url 'reviews' resort.pk %}">To All Reviews</a>
-            {% if user.is_superuser or user.is_staff %}
+            {% if is_owner %}
             <a class="button delete" href="{% url 'remove review' review.pk %}">Delete</a>
             {% endif %}
         </div>
