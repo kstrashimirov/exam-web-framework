@@ -209,7 +209,7 @@ def add_review(request):
 def view_all_reviews(request, pk):
     countries = Country.objects.get(pk=pk)
     resorts = Resort.objects.get(id=pk)
-    p = Paginator(Review.objects.filter(resort_id=pk), 1)
+    p = Paginator(Review.objects.filter(resort_id=pk).order_by('grade'), 1)
     page = request.GET.get('page')
     reviews = p.get_page(page)
 
