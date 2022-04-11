@@ -73,7 +73,7 @@ def remove_country(request, pk):
 
 
 def view_countries(request):
-    p = Paginator(Country.objects.all(), 2)
+    p = Paginator(Country.objects.all().order_by('id'), 2)
     page = request.GET.get('page')
     countries = p.get_page(page)
 
@@ -116,7 +116,7 @@ def view_all_resorts(request):
     countries = Country.objects.all()
     # resorts = Resort.objects.all()
 
-    p = Paginator(Resort.objects.all(), 1)
+    p = Paginator(Resort.objects.all().order_by('country_id'), 1)
     page = request.GET.get('page')
     resorts = p.get_page(page)
 
@@ -209,7 +209,9 @@ def add_review(request):
 def view_all_reviews(request, pk):
     countries = Country.objects.get(pk=pk)
     resorts = Resort.objects.get(id=pk)
-    reviews = Review.objects.filter(resort_id=pk)
+    p = Paginator(Review.objects.filter(resort_id=pk), 1)
+    page = request.GET.get('page')
+    reviews = p.get_page(page)
 
     context = {
         'countries': countries,
