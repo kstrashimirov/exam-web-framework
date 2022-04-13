@@ -25,5 +25,5 @@ urlpatterns = (
     path('reviews/<int:pk>/', view_reviews, name='view review'),
     path('reviews/remove/<int:pk>/', remove_review, name='remove review'),
 
-path('permission', group_permission, name='group'),
+    path('permission', group_permission, name='group'),
 )
