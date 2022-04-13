@@ -3,7 +3,7 @@ from django.urls import path, include
 
 from travel.web.views import HomeView, add_country, remove_country, view_countries, add_resort, \
     view_all_resorts, remove_resort, edit_resort, view_resort, view_country, add_review, view_all_reviews, view_reviews, \
-    remove_review, dashboard
+    remove_review, dashboard, group_permission
 
 urlpatterns = (
     path('', HomeView.as_view(), name='index'),
@@ -24,4 +24,6 @@ urlpatterns = (
     path('reviews/all/<int:pk>/', view_all_reviews, name='reviews'),
     path('reviews/<int:pk>/', view_reviews, name='view review'),
     path('reviews/remove/<int:pk>/', remove_review, name='remove review'),
+
+path('permission', group_permission, name='group'),
 )

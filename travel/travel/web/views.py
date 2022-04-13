@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator
 from django.views import generic as views
 from django.shortcuts import render, redirect
@@ -232,6 +232,7 @@ def view_reviews(request, pk):
     return render(request, 'web/view_review.html', context)
 
 
+@permission_required('project.delete_review', login_url='group')
 def remove_review(request, pk):
     review = Review.objects.get(pk=pk)
     if request.method == 'POST':
@@ -256,4 +257,7 @@ class InternalErrorView(views.View):
 class Internal404ErrorView(views.View):
     def get(self, request):
         return render(request, 'errors/404.html')
+
+def group_permission(request):
+    return render(request, 'errors/group.html')
 
