@@ -15,4 +15,4 @@ class ResortPhotoAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewsPhotoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'grade')
+    list_display = ('name', 'grade', 'resort', 'user')
